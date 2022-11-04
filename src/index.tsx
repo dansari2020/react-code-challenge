@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { CountriesContextProvider } from './context/countriesContext';
+import { ThemeContextProvider } from './context/themeContext';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -9,8 +12,14 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <BrowserRouter>
+      <ThemeContextProvider>
+        <CountriesContextProvider>
+          <App />
+        </CountriesContextProvider>
+      </ThemeContextProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
